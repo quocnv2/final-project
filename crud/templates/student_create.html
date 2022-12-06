@@ -1,0 +1,10 @@
+<h1>Student Create</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <div>
+        <a href="{% url 'show_list_student' %}">Home</a>
+        <button>Save</button>
+    </div>
+</form>

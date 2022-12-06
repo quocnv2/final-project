@@ -1,0 +1,16 @@
+<h1>Student</h1>
+
+<ul>
+    {% for student in student_list  %}
+    <li>
+        <h1>{{ student }}</h1>
+        <div>
+            <a href="{% url "student_edit" id=student.id %}">Edit</a>
+            <a href="{% url "student_delete" id=student.id %}">Delete</a>
+        </div>
+    </li>
+    {% empty %}
+    <li>Empty Student!</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'student_create'%}">Create</a>
