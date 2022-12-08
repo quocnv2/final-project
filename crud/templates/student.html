@@ -1,5 +1,21 @@
 <h1>Student</h1>
 
+<h2>Search</h2>
+<form action="" method="get">
+    <div>
+        <label for="">Search</label>
+        <input type="text" name="search" value="{{ search|default:"" }}">
+    </div>
+    <div>
+        <h3>Sap xep theo</h3>
+        <label for="age_order_by">
+            Age
+            <input id="age_order_by" type="radio" value="age" name="order_by">
+        </label>
+        
+    </div>
+    <button>Search</button>
+</form>
 <ul>
     {% for student in student_list  %}
     <li>
@@ -12,5 +28,17 @@
     {% empty %}
     <li>Empty Student!</li>
     {% endfor %}
+    <ul>
+        {% for page_num in page_object.paginator.page_range %}
+            <li>
+                <a href="{% url "show_list_student" %}?page={{ page_num }}">{{ page_num }}</a>
+            </li>
+        {% endfor %}
+        {% if page_object.has_next %}
+        <li>
+            <a href="{% url "show_list_student" %}?page={{ page_object.next_page_number }}">Next</a>
+        </li>
+        {% endif %}
+    </ul>
 </ul>
 <a href="{% url 'student_create'%}">Create</a>
